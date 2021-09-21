@@ -14,7 +14,13 @@ function calculateProfitLoss()
     var costPrice = initialPriceNo * quantity;
     var sellingPrice = currentPriceNo * quantity;
 
-    if(sellingPrice > costPrice)
+    if(initialPrice.value < 0 || currentPrice.value < 0 || stockQuantity.value < 0)
+    {
+        outputText.innerText = "Negative values not accepted"
+    }
+
+    else
+    {if(sellingPrice > costPrice)
     {
         var profit = sellingPrice - costPrice;
         var profitPercent = (profit/costPrice * 100);
@@ -25,6 +31,11 @@ function calculateProfitLoss()
         var loss = costPrice - sellingPrice;
         var lossPercent = loss/costPrice * 100;
         outputText.innerText = "The loss is: " + loss + " The loss % is: " + lossPercent;
+    }
+    else if(costPrice = sellingPrice)
+    {
+        outputText.innerText = "The stock price has remained unchanged";
+    }
     }
 }
 
